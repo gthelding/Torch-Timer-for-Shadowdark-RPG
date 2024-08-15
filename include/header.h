@@ -16,7 +16,7 @@
 
 //NTP Configuration
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pool.ntp.org", -18000, 60000); // Time Client (customeize to your settings)
+NTPClient timeClient(ntpUDP, "pool.ntp.org", -18000, 60000); // Time Client (customize to your settings)
 
 // Description: This file contains the definitions for the LED strip and OLED display
 #define NUM_LEDS    144    // FastLED definitions
