@@ -14,13 +14,9 @@
 #include <AsyncTCP.h>        // Asynchronous TCP
 #include <ESPAsyncWebServer.h> // Asynchronous Web Server
 
-//Wi-Fi Credentials
-const char* ssid = "Your-SSID";
-const char* password = "Your-SSID-Password";
-
 //NTP Configuration
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pool.ntp.org", -18000, 60000); // Time Client
+NTPClient timeClient(ntpUDP, "pool.ntp.org", -18000, 60000); // Time Client (customeize to your settings)
 
 // Description: This file contains the definitions for the LED strip and OLED display
 #define NUM_LEDS    144    // FastLED definitions

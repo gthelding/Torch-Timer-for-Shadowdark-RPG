@@ -1,5 +1,6 @@
 // Includes
 #include <header.h>            //  Include the header file for the project to keep this cleaner
+#include <secrets.h>           // Include the secrets file for WiFi credentials
 
 bool isTorchLit = false; // Global boolean to track if the torch is lit, initial value is false
 int duration = 0; // Global variable to store the duration of the torch being lit
@@ -19,7 +20,7 @@ void setup() {
   delay(2000); // Sanity Delay
 
   WiFi.mode(WIFI_STA); // Set WiFi mode to Station
-  WiFi.begin(ssid, password);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD); // Connect to WiFi (SSID and Password from secrets.h - you will need to create this file)
   Serial.println("\nConnecting");
 
   while(WiFi.status() != WL_CONNECTED){
@@ -36,12 +37,14 @@ void setup() {
 //Print WiFi status to OLED
   u8g2.clearBuffer();
   u8g2.setFont(u8g2_font_courB10_tf);
-  u8g2.drawStr(0, 10, "IP:");
-  u8g2.drawStr(0, 30, WiFi.localIP().toString().c_str());
-//  std::string rssi;
-//  rssi.append("RSSI: ").append(std::to_string(WiFi.RSSI())).append(" dB");
-//  u8g2.drawStr(0, 42, rssi.c_str()); 
+  u8g2.drawStr(0, 10, "Torch is Out!");
+  u8g2.drawStr(0, 27, "IP:");
+  u8g2.drawStr(0, 42, WiFi.localIP().toString().c_str());
 //  u8g2.sendBuffer();
+  std::string rssi;
+  rssi.append("RSSI: ").append(std::to_string(WiFi.RSSI())).append(" dB");
+  u8g2.drawStr(0, 57, rssi.c_str()); 
+  u8g2.sendBuffer();
 //NTP Setup
 timeClient.begin();
 timeClient.update();
@@ -51,7 +54,6 @@ FastLED.addLeds<WS2812B, LED_PIN, GRB>(g_LEDs, NUM_LEDS);               // Add o
 FastLED.setBrightness(g_Brightness);
 set_max_power_indicator_LED(LED_BUILTIN);                               // Light the builtin LED if we power throttle
 FastLED.setMaxPowerInMilliWatts(g_PowerLimit);                          // Set the power limit, above which brightness will be throttled
-
 
 // Web Server Setup
 // Serve the root page
@@ -76,6 +78,9 @@ FastLED.setMaxPowerInMilliWatts(g_PowerLimit);                          // Set t
     request->send(200, "text/plain", "Torch extinquished");
     Serial.println("Extinquish torch requested");
     FastLED.clear(true); // Clear the LED strip
+     u8g2.clearBuffer();
+     u8g2.drawStr(0, 10, "Torch is Out!");
+     u8g2.sendBuffer();
   });
 
   server.begin();
@@ -90,12 +95,6 @@ if(isTorchLit == true){
 
 isTorchLit = false; // Reset the torch lit flag to avoid infinite loop 
 
-// If the torch is not lit, display a message on the OLED display
-if(isTorchLit == false){
-         u8g2.clearBuffer();
-         u8g2.drawStr(0, 10, "Torch is Out!");
-         u8g2.sendBuffer();
-}
   ws.cleanupClients();
   delay(100);
 }
@@ -135,14 +134,14 @@ while (isTorchLit == true && elapsedTime <= COUNTDOWN_TIME) {
       //Serial.println("Time remaining: " + String(minutes) + ":" + String(seconds));
       u8g2.clearBuffer();
       u8g2.drawStr(0, 10, "Torch Lit!");
-      u8g2.drawStr(0, 25, "Time Remaining:");
+      u8g2.drawStr(0, 27, "Time Remaining:");
       timeRemaining = std::to_string(minutes) + ":" + std::to_string(seconds);
-      u8g2.drawStr(0, 40, timeRemaining.c_str());
+      u8g2.drawStr(0, 42, timeRemaining.c_str());
       u8g2.sendBuffer();
       if (minutes == 0 && seconds == 0) {
          Serial.println("Time's up!");
          u8g2.clearBuffer();
-         u8g2.drawStr(0, 10, "Time's Up!");
+         u8g2.drawStr(0, 10, "Torch is Out!");
          u8g2.sendBuffer();
          }
     }
