@@ -3,5 +3,7 @@ This code is for an ESP32 0.96'' OLED board powering a WS2812B addressable RGB s
 
 The flame effect is from https://github.com/davepl/DavesGarageLEDSeries (Episdoe 10)
 
+This project uses the FastLED Library (http://fastled.io/)
+
 Shadowdark RPG is an award winning tabletop roleplaying game produced by The Arcane Library.
 https://www.thearcanelibrary.com/pages/shadowdark
