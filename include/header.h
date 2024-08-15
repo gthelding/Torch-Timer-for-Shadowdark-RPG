@@ -28,5 +28,5 @@ U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, OLED_CLOCK, OLED_DATA, U8X8_PI
 
 // Global Variables
 int g_Brightness = 128;       // 0-255 LED brightness scale
-int g_PowerLimit = 6000;      // (3000) 900mW Power Limit
+int g_PowerLimit = 6000;      // Power Limit for LED strip (check your specs before setting)
 CRGB g_LEDs[NUM_LEDS] = {0};  // Frame buffer for FastLED
