@@ -31,7 +31,7 @@ void setup() {
 // Print WiFi status to Serial Monitor  
   Serial.println("\nConnected");
   Serial.println((String)"[+] RSSI : " + WiFi.RSSI() + " dB");
-  Serial.print("ESP 32 IP: ");
+  Serial.print("ESP32 IP: ");
   Serial.println(WiFi.localIP());
 
 //Print WiFi status to OLED
