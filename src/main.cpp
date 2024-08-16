@@ -45,6 +45,7 @@ void setup() {
   rssi.append("RSSI: ").append(std::to_string(WiFi.RSSI())).append(" dB");
   u8g2.drawStr(0, 57, rssi.c_str()); 
   u8g2.sendBuffer();
+  
 //NTP Setup
 timeClient.begin();
 timeClient.update();
