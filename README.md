@@ -27,7 +27,6 @@ The Duration options are:
 - Shadowdark's "Blitz Mode" half hour timer.
 - A Duration of the Game Master's choosing.
 
-
 ## To set this up for yourself, you'll need some hardware and the software in this repo.
 
 ### Hardware (With links to Amazon)
@@ -38,7 +37,7 @@ The Duration options are:
 - A Gaming Table (or other suitable mounting point for the LED Strips.
 - Something to access the web page. A tablet, laptop, or smart phone works nicely. If you look at the source code, you'll find the URLs for the light and extinguish commands. You can trigger the effect with anything that can get those URLs. I also have a Zigbee button configured with Home Assistant to trigger the effect.
 
-Before you can use it, you have to connect all this stuff, like so:
+Before you can use it, you have to connect all this stuff (yes, you will have to solder), like so:
 
 ![image](https://github.com/user-attachments/assets/17c558ea-239e-4ea8-b597-bcf0837018a3)
 
@@ -52,16 +51,27 @@ The software is in this repo. One way to load it is to:
 
 - Clone the repo to your local machine
 - Use VScode (with [PlatformIO](https://platformio.org/) to configure the code.
-  - Edit the secrets.h file to put in your Wi-Fi SSID and Password
+  - Add a secrets.h file in your include directory to store your Wi-Fi SSID and Password. The file should contain:
+    ```
+    #define WIFI_SSID "ssid"
+    #define WIFI_PASSWORD "password"
+    ```
+    replace ssid and password with the values for your network.
   - Change the values for NUM_LEDS (the total number of LEDs in your strip(s)) and LED_PIN (the GPIO pin, to which you connected the strip(s) data line(s)).
+  - Change the UTC Offset for the ntp client in header.h. (A bit of searching will find how.) 
   - If you use a different board than I did, you will also need to change the OLED settings.
 - Compile and load the code
 - Test your setup
 
+In general, the code is pretty well commented. It should work fine as is. It can also be experimented with fairly easily. There are some values for the fire() function that can be tweaked to change how the "torch" looks. The code in fire.h has comments explaining those.
 
+I welcome issues and contributions. If anyone has features they would like to see, feel free to suggest them or (better yet) submit a request. One feature I would like to add is a sputter effect - as the torch timer gets down to some value (say 10 minutes left), the torch could randomly sputter (turn down low then flame back up) giving the players a clue, thought not an exact time, that the torch is running out. If players have torches left then it is no problem. If it is their last torch, it could really ramp up the tension.
 
+## NOTES
 
-
-The flame effect is from https://github.com/davepl/DavesGarageLEDSeries (Episdoe 10)
+If you need help getting started with ESP32, VS Code, and PlatformIO, check out this [video](https://www.youtube.com/watch?v=rlqbVttV0gI&list=PLF2KJ6Gy3cZ7ynsp8s4tnqEFmY15CKhmH&index=16) and this [video](https://www.youtube.com/watch?v=aub9PecrbuM&list=PLF2KJ6Gy3cZ7ynsp8s4tnqEFmY15CKhmH&index=13).
 
 This project uses the FastLED Library (http://fastled.io/)
+
+The flame effect is from [Dave's Garage](https://github.com/davepl/DavesGarageLEDSeries) (Episode 10)
+
