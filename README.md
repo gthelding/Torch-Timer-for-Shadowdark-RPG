@@ -2,7 +2,7 @@
 ## Why
 I'm a big fan of the Shadowdark RPG, an Ennie award winning game published by [The Arcane Library](https://www.thearcanelibrary.com/pages/shadowdark). One of Shadowdark's standout features is the Torch Timer. When the adventurers light a torch in game, the gamemaster starts a real-world 60 minute timer. As the players play, the timer ticks down. Sometimes they pay attention and rememebr to light another torch before time is up - sometimes they don't! Since only monsters can see in the dark, this can become a major isuee.
 
-While you could use any time you like, I have been wanting a more visual timer that could add to the atmosphere of the game. Genuine flickering firelight would be ideal, but not practical. I decided on the next best thing - LEDs.
+While you could use any timer you like, I have been wanting a more visual timer that could add to the atmosphere of the game. Genuine flickering firelight would be ideal, but not practical. I decided on the next best thing - LEDs.
 
 ## What
 **A Gaming Table with an Integrated Torch Timer:**
