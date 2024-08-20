@@ -75,3 +75,5 @@ This project uses the FastLED Library (http://fastled.io/)
 
 The flame effect is from [Dave's Garage](https://github.com/davepl/DavesGarageLEDSeries) (Episode 10)
 
+This code and project are not affiliated with The Arcane Library, LLC. Shadowdark RPG © 2023 The Arcane Library, LLC.
+
