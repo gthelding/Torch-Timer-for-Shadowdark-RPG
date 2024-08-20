@@ -2,7 +2,7 @@
 ## Why
 I'm a big fan of the Shadowdark RPG, an Ennie award winning game published by [The Arcane Library](https://www.thearcanelibrary.com/pages/shadowdark). One of Shadowdark's standout features is the Torch Timer. When the adventurers light a torch in game, the gamemaster starts a real-world 60 minute timer. As the players play, the timer ticks down. Sometimes they pay attention and rememebr to light another torch before time is up - sometimes they don't! Since only monsters can see in the dark, this can become a major isuee.
 
-While you could use any time you like, I have been wanting a more visual timer that could add to the atmosphere of the game. Flickering firelight would be ideal, but not practical. I decided on the next best thing - LEDs.
+While you could use any time you like, I have been wanting a more visual timer that could add to the atmosphere of the game. Genuine flickering firelight would be ideal, but not practical. I decided on the next best thing - LEDs.
 
 ## What
 **A Gaming Table with an Integrated Torch Timer:**
@@ -39,7 +39,7 @@ The Duration options are:
 
 Before you can use it, you have to connect all this stuff (yes, you will have to solder), like so:
 
-![image](https://github.com/user-attachments/assets/17c558ea-239e-4ea8-b597-bcf0837018a3)
+![image](https://github.com/user-attachments/assets/255523fd-1ea9-4677-8184-e2644c895bb2)
 
 Your wiring may differ. For example, you may want to use a USB adapter to power the ESP32. (**Caution:** Be sure you do not hook up the 5V power and USB at the same time. For example, you should disconnect the 5V from the ESP32 when connecting the USB to upload the code.)
 
